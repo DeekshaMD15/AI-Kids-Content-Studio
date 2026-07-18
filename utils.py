@@ -1,6 +1,5 @@
 import os
 import requests
-import replicate
 from io import BytesIO
 from PIL import Image
 
