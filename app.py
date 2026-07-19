@@ -121,6 +121,19 @@ length = st.selectbox(
     "📏 Story Length",
     ["Short", "Medium", "Long"]
 )
+image_style = st.selectbox(
+    "🎨 Image Style",
+    [
+        "Pixar",
+        "Disney",
+        "Cartoon",
+        "Anime",
+        "Watercolor",
+        "Storybook",
+        "3D Render",
+        "Realistic"
+    ]
+)
 # ----------------------------
 # IMAGE GENERATION
 # ----------------------------
@@ -159,7 +172,7 @@ STORY:
 (write story)
 
 IMAGE_PROMPT:
-(write Pixar style image prompt)
+(write a {image_style} style image prompt suitable for children)
 
 VIDEO_PROMPT:
 (write cinematic video prompt)
