@@ -46,6 +46,27 @@ st.set_page_config(
     page_icon="📚",
     layout="wide"
 )
+st.markdown("""
+<style>
+
+div.stButton > button {
+    background: linear-gradient(90deg,#4F46E5,#7C3AED,#EC4899);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 15px;
+    border: none;
+    height: 60px;
+    width: 100%;
+}
+
+div.stButton > button:hover {
+    box-shadow: 0 0 20px rgba(236,72,153,0.6);
+    transform: scale(1.02);
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 
 # ----------------------------
@@ -188,43 +209,52 @@ with col4:
 # ----------------------------
 st.markdown("## ✨ Create Your Story")
 st.info("Fill in the details below and let AI create an amazing story for your child.")
-with st.container():
+     
+topic = st.text_input("📖 Story Topic")
+     
+     
 
-     topic = st.text_input("📖 Story Topic")
+col1, col2 = st.columns(2)
 
+with col1:
+    age = st.selectbox(
+        "👶 Child Age",
+        [2, 3, 4, 5, 6, 7, 8]
+    )
 
-     age = st.selectbox(
-         "👶 Child Age",
-         [2, 3, 4, 5, 6, 7, 8]
-     )
+    image_style = st.selectbox(
+        "🎨 Image Style",
+        [
+            "Pixar",
+            "Disney",
+            "Cartoon",
+            "Anime",
+            "Watercolor",
+            "Storybook",
+            "3D Render",
+            "Realistic"
+        ]
+    )
 
-     length = st.selectbox(
+with col2:
+    length = st.selectbox(
         "📏 Story Length",
         ["Short", "Medium", "Long"]
-     )
-     image_style = st.selectbox(
-         "🎨 Image Style",
-         [
-           "Pixar",
-           "Disney",
-           "Cartoon",
-           "Anime",
-           "Watercolor",
-           "Storybook",
-           "3D Render",
-           "Realistic"
-         ]
-     )
-     language = st.selectbox(
-         "🌍 Story Language",
-         [
-             "English",
-             "Hindi",
-             "Kannada",
-             "Tamil",
-             "Telugu"
-         ]
-     )
+    )
+
+    language = st.selectbox(
+        "🌍 Story Language",
+        [
+            "English",
+            "Hindi",
+            "Kannada",
+            "Tamil",
+            "Telugu"
+        ]
+    )
+
+
+     
 # ----------------------------
 # IMAGE GENERATION
 # ----------------------------
@@ -338,7 +368,9 @@ QUIZ:
 
         story = result
 
-    st.success("✅ Content Generated Successfully!")
+    st.balloons()
+
+    st.success("🎉 Your magical story is ready!")
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
@@ -370,6 +402,9 @@ QUIZ:
     )
 
     st.balloons()
+    st.divider()
+
+    st.markdown("## 📚 Your Generated Content")
 
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "📖 Story",
@@ -381,8 +416,19 @@ QUIZ:
     with tab1:
         st.subheader("📖 Story")
 
-        st.write(story)
+        st.info("Enjoy your AI-generated story!")
 
+        st.markdown(f"""
+        <div style="
+        background:#1e293b;
+        padding:20px;
+        border-radius:15px;
+        border:1px solid #334155;
+        line-height:1.8;
+        font-size:17px;">
+        {story}
+        </div>
+        """, unsafe_allow_html=True)
         st.download_button(
             "⬇ Download Story",
             story,
@@ -400,14 +446,15 @@ QUIZ:
 
     with tab2:
         st.subheader("🖼 AI Image")
+        st.info("Your AI-generated illustration")
 
         image = generate_image(image_prompt)
 
         if image is not None:
             st.image(
                 image,
-                caption="Generated AI Image",
-                width="stretch"
+                caption="AI Genrated Illusration",
+                use_container_width=True
             )
 
             image_path = f"generated/image_{timestamp}.png"
@@ -425,7 +472,7 @@ QUIZ:
             st.info("Image generation is currently unavailable.")
 
         st.markdown("### 📝 Image Prompt")
-        st.write(image_prompt)
+        st.code(image_prompt)
 
         st.download_button(
             "⬇ Download Image Prompt",
