@@ -103,10 +103,18 @@ def generate_image(prompt, api_token=None):
     from urllib.parse import quote
 
     try:
-        url = f"https://image.pollinations.ai/prompt/{quote(prompt)}"
+        url = (
+            f"https://image.pollinations.ai/prompt/{quote(prompt)}"
+            "?width=1024"
+            "&height=1024"
+            "&model=flux"
+            "&seed=42"
+)
         print("Request URL:", url)
 
         response = requests.get(url, timeout=120)
+        print("Status:", response.status_code)
+        print("Headers:", response.headers)
 
         print("Status Code:", response.status_code)
         print("Content-Type:", response.headers.get("Content-Type"))
@@ -117,7 +125,7 @@ def generate_image(prompt, api_token=None):
             print("Image loaded successfully!")
             return image
 
-        print("Response text:", response.text)
+        print(response.text[:500])
         return None
 
     except Exception as e:

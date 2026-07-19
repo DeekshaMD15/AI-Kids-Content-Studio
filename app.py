@@ -79,73 +79,152 @@ st.sidebar.info("""
 # TITLE
 # ----------------------------
 
+
+# ----------------------------
+# HERO SECTION
+# ----------------------------
+
 st.markdown("""
-# 🤖 AI Kids Content Studio
+<style>
 
-### Create AI-powered stories, image prompts, video prompts, voice-overs, and quizzes for children.
+.hero {
+    background: linear-gradient(90deg,#4F46E5,#7C3AED,#EC4899);
+    padding:25px;
+    border-radius:18px;
+    text-align:center;
+    color:white;
+    margin-bottom:20px;
+}
 
----
-""")
-col1, col2, col3 = st.columns(3)
+.hero h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    font-size:18px;
+}
+
+</style>
+
+<div class="hero">
+
+<h1>📚 AI Kids Content Studio</h1>
+
+<p>
+Create magical stories, AI images, voice narration,
+video prompts and quizzes for children ✨
+</p>
+
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<style>
+
+.feature-card{
+    background:#1e293b;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    color:white;
+    box-shadow:0 4px 12px rgba(0,0,0,0.3);
+}
+
+.feature-card h2{
+    margin-bottom:10px;
+}
+
+.feature-card p{
+    color:#cbd5e1;
+    font-size:15px;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+col1, col2, col3, col4 = st.columns(4)
+
 with col1:
-    st.metric(
-        label="📖 Stories",
-        value="Unlimited"
-    )
+    st.markdown("""
+    <div class="feature-card">
+        <h2>📖</h2>
+        <h3>Stories</h3>
+        <p>Unlimited AI Stories</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 with col2:
-    st.metric(
-        label="🖼 Image Prompts",
-        value="AI Powered"
-    )
+    st.markdown("""
+    <div class="feature-card">
+        <h2>🎨</h2>
+        <h3>Image Styles</h3>
+        <p>8 Creative Styles</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 with col3:
-    st.metric(
-        label="🎬 Video Prompts",
-        value="Ready"
-    )
+    st.markdown("""
+    <div class="feature-card">
+        <h2>🌍</h2>
+        <h3>Languages</h3>
+        <p>5 Supported Languages</p>
+    </div>
+    """, unsafe_allow_html=True)
 
+with col4:
+    st.markdown("""
+    <div class="feature-card">
+        <h2>🎤</h2>
+        <h3>Voice</h3>
+        <p>MP3 Playback & Download</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 
 
 # ----------------------------
 # INPUTS
 # ----------------------------
+st.markdown("## ✨ Create Your Story")
+st.info("Fill in the details below and let AI create an amazing story for your child.")
+with st.container():
 
-topic = st.text_input("📖 Story Topic")
+     topic = st.text_input("📖 Story Topic")
 
-age = st.selectbox(
-    "👶 Child Age",
-    [2, 3, 4, 5, 6, 7, 8]
-)
 
-length = st.selectbox(
-    "📏 Story Length",
-    ["Short", "Medium", "Long"]
-)
-image_style = st.selectbox(
-    "🎨 Image Style",
-    [
-        "Pixar",
-        "Disney",
-        "Cartoon",
-        "Anime",
-        "Watercolor",
-        "Storybook",
-        "3D Render",
-        "Realistic"
-    ]
-)
-language = st.selectbox(
-    "🌍 Story Language",
-    [
-        "English",
-        "Hindi",
-        "Kannada",
-        "Tamil",
-        "Telugu"
-    ]
-)
+     age = st.selectbox(
+         "👶 Child Age",
+         [2, 3, 4, 5, 6, 7, 8]
+     )
+
+     length = st.selectbox(
+        "📏 Story Length",
+        ["Short", "Medium", "Long"]
+     )
+     image_style = st.selectbox(
+         "🎨 Image Style",
+         [
+           "Pixar",
+           "Disney",
+           "Cartoon",
+           "Anime",
+           "Watercolor",
+           "Storybook",
+           "3D Render",
+           "Realistic"
+         ]
+     )
+     language = st.selectbox(
+         "🌍 Story Language",
+         [
+             "English",
+             "Hindi",
+             "Kannada",
+             "Tamil",
+             "Telugu"
+         ]
+     )
 # ----------------------------
 # IMAGE GENERATION
 # ----------------------------
@@ -202,6 +281,12 @@ QUIZ:
 
     with st.spinner("Generating AI Content..."):
 
+        progress = st.progress(0)
+        status = st.empty()
+
+        status.write("📖 Creating Story...")
+        progress.progress(20)
+
         response = client.chat.completions.create(
             model="tencent/hy3:free",
             messages=[
@@ -209,9 +294,20 @@ QUIZ:
                     "role": "user",
                     "content": prompt
                 }
-            ]
+           ]
         )
 
+        status.write("🎨 Generating Image...")
+        progress.progress(50)
+
+        status.write("🎤 Creating Voice...")
+        progress.progress(75)
+
+        status.write("📄 Preparing PDF...")
+        progress.progress(90)
+
+        status.write("✅ Done!")
+        progress.progress(100)
     result = response.choices[0].message.content
 
     story = ""
