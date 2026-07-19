@@ -11,6 +11,8 @@ from PIL import Image
 from reportlab.platypus import SimpleDocTemplate, Paragraph
 from reportlab.lib.styles import getSampleStyleSheet
 from utils import generate_image, create_pdf, save_story
+from gtts import gTTS
+import io
 
 
 
@@ -339,11 +341,26 @@ QUIZ:
 
         st.write(voice_over)
 
+        tts = gTTS(text=voice_over, lang="en")
+
+        audio_buffer = io.BytesIO()
+        tts.write_to_fp(audio_buffer)
+        audio_buffer.seek(0)
+
+        st.audio(audio_buffer, format="audio/mp3")
+
         st.download_button(
-            "⬇ Download Voice Over",
-            voice_over,
-            file_name="voice_over.txt"
-        )
+           "⬇ Download MP3",
+           data=audio_buffer.getvalue(),
+           file_name="voice_over.mp3",
+           mime="audio/mpeg"
+    )
+
+        st.download_button(
+            "⬇ Download Voice Over Text",
+             voice_over,
+             file_name="voice_over.txt"
+    )
 
 
     with tab5:
