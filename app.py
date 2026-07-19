@@ -136,6 +136,16 @@ image_style = st.selectbox(
         "Realistic"
     ]
 )
+language = st.selectbox(
+    "🌍 Story Language",
+    [
+        "English",
+        "Hindi",
+        "Kannada",
+        "Tamil",
+        "Telugu"
+    ]
+)
 # ----------------------------
 # IMAGE GENERATION
 # ----------------------------
@@ -162,6 +172,10 @@ You are an expert children's storyteller.
 
 Create content for a {age}-year-old child.
 
+Generate the STORY, VOICE_OVER, and QUIZ in {language}.
+
+The IMAGE_PROMPT should always be written in English, but describe the scene in a {image_style} style suitable for children.
+
 Topic:
 {topic}
 
@@ -174,7 +188,7 @@ STORY:
 (write story)
 
 IMAGE_PROMPT:
-(write a {image_style} style image prompt suitable for children)
+(write the prompt in English for a {image_style} style children's illustration)
 
 VIDEO_PROMPT:
 (write cinematic video prompt)
@@ -341,7 +355,18 @@ QUIZ:
 
         st.write(voice_over)
 
-        tts = gTTS(text=voice_over, lang="en")
+        language_codes = {
+            "English": "en",
+            "Hindi": "hi",
+            "Kannada": "kn",
+            "Tamil": "ta",
+            "Telugu": "te"
+        }
+
+        tts = gTTS(
+            text=voice_over,
+            lang=language_codes[language]
+        )
 
         audio_buffer = io.BytesIO()
         tts.write_to_fp(audio_buffer)
