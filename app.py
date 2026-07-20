@@ -272,7 +272,7 @@ with col2:
 
 generate = st.button(
     "🚀 Generate AI Content",
-    use_container_width=True
+    width="stretch"
 )
 if generate:
 
@@ -414,19 +414,41 @@ QUIZ:
         "❓ Quiz"
     ])
     with tab1:
-        st.subheader("📖 Story")
+        
 
-        st.info("Enjoy your AI-generated story!")
+        st.markdown("""
+        <div style="
+        background:linear-gradient(135deg,#1E293B,#0F172A);
+        padding:18px;
+        border-radius:20px;
+        border:1px solid #334155;
+        box-shadow:0 8px 25px rgba(0,0,0,0.3);
+        margin-bottom:12px;
+        ">
+
+        <h2 style="color:#F8FAFC;">
+        📖 AI Generated Story
+        </h2>
+
+        <hr style="border:1px solid #334155;">
+
+        </div>
+        """, unsafe_allow_html=True)
 
         st.markdown(f"""
         <div style="
-        background:#1e293b;
-        padding:20px;
+        background:#111827;
+        padding:25px;
         border-radius:15px;
-        border:1px solid #334155;
-        line-height:1.8;
-        font-size:17px;">
+        border-left:6px solid #8B5CF6;
+        line-height:2.2;
+        font-size:20px;
+        color:#F8FAFC;
+        text-align:justify;
+        ">
+
         {story}
+
         </div>
         """, unsafe_allow_html=True)
         st.download_button(
@@ -445,16 +467,39 @@ QUIZ:
 
 
     with tab2:
-        st.subheader("🖼 AI Image")
-        st.info("Your AI-generated illustration")
+        st.markdown("""
+        <div style="
+        background:linear-gradient(135deg,#1E293B,#0F172A);
+        padding:14px;
+        border-radius:18px;
+        border:1px solid #334155;
+        margin-bottom:20px;
+        ">
+
+        <h2 style="color:white;">
+        🖼 AI Illustration
+        </h2>
+
+        <p style="
+        color:#94A3B8;
+        font-size:15px;
+        margin-top:5px;">
+        ✨ AI Generated using Pollinations AI
+        </p>
+
+        <hr style="border:1px solid #334155;">
+
+        </div>
+        """, unsafe_allow_html=True)
 
         image = generate_image(image_prompt)
+        
 
         if image is not None:
             st.image(
                 image,
-                caption="AI Genrated Illusration",
-                use_container_width=True
+                caption="✨ AI Genrated Illusration",
+                width="stretch"
             )
 
             image_path = f"generated/image_{timestamp}.png"
@@ -472,19 +517,73 @@ QUIZ:
             st.info("Image generation is currently unavailable.")
 
         st.markdown("### 📝 Image Prompt")
-        st.code(image_prompt)
+
+        st.markdown(f"""
+        <div style="
+        background:#111827;
+        padding:20px;
+        border-radius:15px;
+        border-left:6px solid #3B82F6;
+        line-height:1.8;
+        font-size:17px;
+        color:#F8FAFC;
+        text-align:justify;
+        ">
+
+        {image_prompt}
+
+        </div>
+        """, unsafe_allow_html=True)
 
         st.download_button(
-            "⬇ Download Image Prompt",
-            image_prompt,
-            file_name="image_prompt.txt"
+             "⬇ Download Image Prompt",
+             image_prompt,
+             file_name="image_prompt.txt"
         )
 
 
     with tab3:
-        st.subheader("🎬 Video Prompt")
+        st.markdown("""
+        <div style="
+        background:linear-gradient(135deg,#1E293B,#0F172A);
+        padding:14px;
+        border-radius:18px;
+        border:1px solid #334155;
+        margin-bottom:20px;
+        ">
 
-        st.write(video_prompt)
+        <h2 style="color:white;">
+        🎬 AI Video Prompt
+        </h2>
+
+        <p style="
+        color:#94A3B8;
+        font-size:15px;
+        margin-top:5px;">
+        ✨ Create cinematic videos using this AI-generated prompt.
+        </p>
+
+        <hr style="border:1px solid #334155;">
+
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown(f"""
+        <div style="
+        background:#111827;
+        padding:20px;
+        border-radius:15px;
+        border-left:6px solid #EC4899;
+        line-height:1.8;
+        font-size:17px;
+        color:#F8FAFC;
+        text-align:justify;
+        ">
+
+        {video_prompt}
+
+        </div>
+        """, unsafe_allow_html=True)
 
         st.download_button(
             "⬇ Download Video Prompt",
@@ -494,9 +593,30 @@ QUIZ:
 
 
     with tab4:
-        st.subheader("🎤 Voice Over")
+        st.markdown("""
+        <div style="
+        background:linear-gradient(135deg,#1E293B,#0F172A);
+        padding:14px;
+        border-radius:18px;
+        border:1px solid #334155;
+        margin-bottom:20px;
+        ">
 
-        st.write(voice_over)
+        <h2 style="color:white;">
+        🎤 AI Voice Narration
+        </h2>
+
+        <p style="
+        color:#94A3B8;
+        font-size:15px;
+        margin-top:5px;">
+        ✨ Listen to the AI-generated narration or download it as an MP3.
+        </p>
+
+        <hr style="border:1px solid #334155;">
+
+        </div>
+        """, unsafe_allow_html=True)
 
         language_codes = {
             "English": "en",
@@ -505,6 +625,22 @@ QUIZ:
             "Tamil": "ta",
             "Telugu": "te"
         }
+        st.markdown(f"""
+        <div style="
+        background:#111827;
+        padding:20px;
+        border-radius:15px;
+        border-left:6px solid #10B981;
+        line-height:1.8;
+        font-size:17px;
+        color:#F8FAFC;
+        text-align:justify;
+        ">
+
+       {voice_over}
+
+       </div>
+       """, unsafe_allow_html=True)
 
         tts = gTTS(
             text=voice_over,
@@ -514,30 +650,90 @@ QUIZ:
         audio_buffer = io.BytesIO()
         tts.write_to_fp(audio_buffer)
         audio_buffer.seek(0)
+        st.markdown("### ▶️ Listen to the Narration")
 
         st.audio(audio_buffer, format="audio/mp3")
 
-        st.download_button(
-           "⬇ Download MP3",
-           data=audio_buffer.getvalue(),
-           file_name="voice_over.mp3",
-           mime="audio/mpeg"
-    )
+        col1, col2 = st.columns(2)
 
-        st.download_button(
-            "⬇ Download Voice Over Text",
-             voice_over,
-             file_name="voice_over.txt"
-    )
+        with col1:
+            st.download_button(
+                "⬇ Download MP3",
+                data=audio_buffer.getvalue(),
+                file_name="voice_over.mp3",
+                mime="audio/mpeg"
+            )
 
+        with col2:
+            st.download_button(
+                "📄 Download Text",
+                voice_over,
+                file_name="voice_over.txt"
+            )
 
     with tab5:
-        st.subheader("❓ Quiz")
 
-        st.write(quiz)
+        st.markdown("""
+        <div style="
+        background:linear-gradient(135deg,#1E293B,#0F172A);
+        padding:14px;
+        border-radius:18px;
+        border:1px solid #334155;
+        margin-bottom:20px;
+        ">
+
+        <h2 style="color:white;">
+        ❓ AI Quiz
+        </h2>
+
+        <p style="
+        color:#94A3B8;
+        font-size:15px;
+        margin-top:5px;">
+        ✨ Test your child's understanding with fun questions.
+        </p>
+
+        <hr style="border:1px solid #334155;">
+
+        </div>
+        """, unsafe_allow_html=True)
+
+        formatted_quiz = quiz.replace("\n", "<br><br>")
+
+        st.markdown(f"""
+        <div style="
+        background:#111827;
+        padding:20px;
+        border-radius:15px;
+        border-left:6px solid #F59E0B;
+        line-height:2;
+        font-size:18px;
+        color:#F8FAFC;
+        ">
+
+       {formatted_quiz}
+
+       </div>
+       """, unsafe_allow_html=True)
 
         st.download_button(
             "⬇ Download Quiz",
             quiz,
             file_name="quiz.txt"
         )
+        st.markdown("---")
+
+        st.markdown("""
+        <div style="
+        text-align:center;
+        padding:20px;
+        color:#94A3B8;
+        font-size:16px;
+        ">
+
+        ✨ Built with ❤️ by <b>Deeksha M D</b><br>
+        AI Kids Content Studio © 2026
+
+        </div>
+        """, unsafe_allow_html=True)
+        

@@ -107,7 +107,6 @@ def generate_image(prompt, api_token=None):
             f"https://image.pollinations.ai/prompt/{quote(prompt)}"
             "?width=1024"
             "&height=1024"
-            "&model=flux"
             "&seed=42"
 )
         print("Request URL:", url)
