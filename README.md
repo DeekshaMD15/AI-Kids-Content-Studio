@@ -1,11 +1,10 @@
 # 🧸 AI Kids Content Studio
 
-<<<<<<< HEAD
-An AI-powered educational web application that generates children's stories, AI illustrations, voice narration, video prompts, quizzes, and downloadable PDFs in multiple languages.
+An AI-powered educational web application that creates engaging children's content including AI-generated stories, illustrations, voice narration, video prompts, quizzes, and downloadable PDFs in multiple languages.
 
 ---
 
-## 🌟 Features
+## ✨ Features
 
 - 📖 AI Story Generation
 - 🖼 AI Illustration Generation
@@ -15,24 +14,7 @@ An AI-powered educational web application that generates children's stories, AI 
 - 🌍 Multi-language Support
 - 📄 PDF Export
 - 🎨 Beautiful Child-Friendly UI
-- ☁️ Streamlit Cloud Deployment
-=======
-An AI-powered educational application that creates magical children's content including stories, illustrations, voice narration, video prompts, quizzes, and downloadable PDFs.
-
----
-
-## ✨ Features
-
-- 📖 AI Story Generation
-- 🖼 AI Image Generation
-- 🎬 AI Video Prompt Generation
-- 🎤 AI Voice Narration (MP3)
-- ❓ Interactive Quiz
-- 🌍 Multi-language Support
-- 📄 PDF Export
-- 🎨 Beautiful Child-Friendly UI
 - ☁️ Streamlit Deployment
->>>>>>> 12b892d2c2454f7de47011b9d8c1a353a9c288d4
 
 ---
 
@@ -41,11 +23,8 @@ An AI-powered educational application that creates magical children's content in
 - Python
 - Streamlit
 - OpenRouter API
-<<<<<<< HEAD
-=======
-- OpenAI SDK
->>>>>>> 12b892d2c2454f7de47011b9d8c1a353a9c288d4
 - Pollinations AI
+- OpenAI SDK
 - gTTS
 - Pillow
 - ReportLab
@@ -54,7 +33,6 @@ An AI-powered educational application that creates magical children's content in
 
 ---
 
-<<<<<<< HEAD
 # 📸 Screenshots
 
 ## 🏠 Home Page
@@ -88,51 +66,26 @@ An AI-powered educational application that creates magical children's content in
 ---
 
 # 🚀 Installation
-=======
-## 📸 Screenshots
 
-### Home Page
-
-(Add Screenshot Here)
-
-### Story Generation
-
-(Add Screenshot Here)
-
-### AI Illustration
-
-(Add Screenshot Here)
-
-### Voice Narration
-
-(Add Screenshot Here)
-
-### Quiz
-
-(Add Screenshot Here)
-
----
-
-## 🚀 Installation
->>>>>>> 12b892d2c2454f7de47011b9d8c1a353a9c288d4
-
-Clone the repository
+### Clone the repository
 
 ```bash
-<<<<<<< HEAD
-git clone https://github.com/YOUR_GITHUB_USERNAME/AI-Kids-Content-Studio.git
-=======
-git clone https://github.com/YOUR_USERNAME/AI-Kids-Content-Studio.git
->>>>>>> 12b892d2c2454f7de47011b9d8c1a353a9c288d4
+git clone https://github.com/DeekshaMD15/AI-Kids-Content-Studio.git
 ```
 
-Install dependencies
+### Navigate to the project
+
+```bash
+cd AI-Kids-Content-Studio
+```
+
+### Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run
+### Run the application
 
 ```bash
 streamlit run app.py
@@ -140,62 +93,57 @@ streamlit run app.py
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
 ```text
-AI-Kids-Content-Studio
+AI-Kids-Content-Studio/
 │
-<<<<<<< HEAD
 ├── assets/
 │   └── images/
+│       └── background.png
 │
 ├── generated/
 ├── images/
+│   ├── home.png
+│   ├── story.png
+│   ├── image.png
+│   ├── voice.png
+│   └── quiz.png
 │
 ├── app.py
+├── prompts.py
 ├── utils.py
 ├── ui.css
 ├── requirements.txt
 └── README.md
-=======
-├── assets
-├── generated
-├── app.py
-├── prompts.py
-├── utils.py
-├── requirements.txt
-├── README.md
->>>>>>> 12b892d2c2454f7de47011b9d8c1a353a9c288d4
 ```
 
 ---
 
-<<<<<<< HEAD
+# 🌟 Key Highlights
+
+- Generates AI-powered children's stories based on user input.
+- Creates colorful AI illustrations for each story.
+- Produces voice narration in multiple languages.
+- Generates cinematic video prompts for story animation.
+- Creates quizzes based on the generated story.
+- Exports complete storybooks as downloadable PDFs.
+- Responsive and child-friendly Streamlit interface.
+
+---
+
 # 👩‍💻 Developed By
 
 **Deeksha M D**
 
-🎓 Electronics & Communication Engineering
+🎓 B.E. in Electronics and Communication Engineering
 
 🤖 AI & Machine Learning Enthusiast
 
----
-
-## ⭐ Support
-
-If you like this project, please consider giving it a ⭐ on GitHub!
-=======
-## 👩‍💻 Developed By
-
-**Deeksha M D**
-
-Electronics & Communication Engineering
-
-AI & Machine Learning Enthusiast
+📍 Mysuru, Karnataka, India
 
 ---
 
-## ⭐ If you like this project
+# ⭐ Support
 
-Please consider giving this repository a ⭐
->>>>>>> 12b892d2c2454f7de47011b9d8c1a353a9c288d4
+If you found this project helpful, consider giving this repository a ⭐ on GitHub!
