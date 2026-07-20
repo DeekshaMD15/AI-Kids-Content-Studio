@@ -13,6 +13,52 @@ from reportlab.lib.styles import getSampleStyleSheet
 from utils import generate_image, create_pdf, save_story
 from gtts import gTTS
 import io
+import base64
+def add_bg(image_file):
+    with open(image_file, "rb") as image:
+        encoded = base64.b64encode(image.read()).decode()
+
+    st.markdown(
+        f"""
+        <style>
+
+        .stApp {{
+            background-image: url("data:image/png;base64,{encoded}");
+            background-size: cover;
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }}
+
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+def section_header(icon, title, subtitle):
+    st.markdown(f"""
+    <div style="
+    background:linear-gradient(135deg,#1E293B,#0F172A);
+    padding:18px;
+    border-radius:18px;
+    border:1px solid #334155;
+    margin-bottom:20px;
+    ">
+
+    <h2 style="color:white;">
+    {icon} {title}
+    </h2>
+
+    <p style="
+    color:#CBD5E1;
+    font-size:15px;
+    margin-top:5px;">
+    {subtitle}
+    </p>
+
+    <hr style="border:1px solid #334155;">
+
+    </div>
+    """, unsafe_allow_html=True)
 
 
 
@@ -46,6 +92,9 @@ st.set_page_config(
     page_icon="📚",
     layout="wide"
 )
+add_bg("assets/images/background.png")
+with open("ui.css") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 st.markdown("""
 <style>
 
@@ -144,12 +193,21 @@ st.markdown("""
 <style>
 
 .feature-card{
-    background:#1e293b;
-    padding:20px;
-    border-radius:15px;
+    background:rgba(15,23,42,0.78);
+    backdrop-filter:blur(12px);
+    padding:25px;
+    border-radius:20px;
     text-align:center;
     color:white;
-    box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    border:1px solid rgba(255,255,255,0.15);
+    box-shadow:0 10px 30px rgba(0,0,0,0.35);
+    transition:0.3s;
+}
+
+.feature-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 40px rgba(0,0,0,0.45);
+}
 }
 
 .feature-card h2{
@@ -207,9 +265,28 @@ with col4:
 # ----------------------------
 # INPUTS
 # ----------------------------
-st.markdown("## ✨ Create Your Story")
-st.info("Fill in the details below and let AI create an amazing story for your child.")
+st.markdown("""
+<div style="
+background:rgba(15,23,42,0.75);
+backdrop-filter:blur(12px);
+padding:25px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.15);
+margin-bottom:20px;
+">
+
+<h2 style="color:white;">
+✨ Create Your Story
+</h2>
+
+<p style="color:#E2E8F0;">
+Fill in the details below and let AI create an amazing story for your child.
+</p>
+
+</div>
+""", unsafe_allow_html=True)
      
+
 topic = st.text_input("📖 Story Topic")
      
      
@@ -274,6 +351,8 @@ generate = st.button(
     "🚀 Generate AI Content",
     width="stretch"
 )
+
+
 if generate:
 
     prompt = f"""
@@ -404,7 +483,35 @@ QUIZ:
     st.balloons()
     st.divider()
 
-    st.markdown("## 📚 Your Generated Content")
+    st.markdown("""
+<div style="
+background:rgba(15,23,42,0.82);
+backdrop-filter:blur(14px);
+padding:25px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.15);
+margin-top:25px;
+margin-bottom:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.35);
+">
+
+<h2 style="
+color:white;
+margin-bottom:10px;
+">
+📚 Your Generated Content
+</h2>
+
+<p style="
+color:#CBD5E1;
+font-size:16px;
+margin:0;
+">
+Explore your AI-generated story, illustration, video prompt, narration and quiz.
+</p>
+
+</div>
+""", unsafe_allow_html=True)
 
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "📖 Story",
@@ -413,27 +520,16 @@ QUIZ:
         "🎤 Voice Over",
         "❓ Quiz"
     ])
+    
     with tab1:
         
 
-        st.markdown("""
-        <div style="
-        background:linear-gradient(135deg,#1E293B,#0F172A);
-        padding:18px;
-        border-radius:20px;
-        border:1px solid #334155;
-        box-shadow:0 8px 25px rgba(0,0,0,0.3);
-        margin-bottom:12px;
-        ">
-
-        <h2 style="color:#F8FAFC;">
-        📖 AI Generated Story
-        </h2>
-
-        <hr style="border:1px solid #334155;">
-
-        </div>
-        """, unsafe_allow_html=True)
+        section_header(
+            "📖",
+            "AI Generated Story",
+            "Read your AI-generated children's story."
+        )
+        
 
         st.markdown(f"""
         <div style="
@@ -467,30 +563,11 @@ QUIZ:
 
 
     with tab2:
-        st.markdown("""
-        <div style="
-        background:linear-gradient(135deg,#1E293B,#0F172A);
-        padding:14px;
-        border-radius:18px;
-        border:1px solid #334155;
-        margin-bottom:20px;
-        ">
-
-        <h2 style="color:white;">
-        🖼 AI Illustration
-        </h2>
-
-        <p style="
-        color:#94A3B8;
-        font-size:15px;
-        margin-top:5px;">
-        ✨ AI Generated using Pollinations AI
-        </p>
-
-        <hr style="border:1px solid #334155;">
-
-        </div>
-        """, unsafe_allow_html=True)
+        section_header(
+        "🖼",
+        "AI Illustration",
+        "AI Generated using Pollinations AI"
+)
 
         image = generate_image(image_prompt)
         
@@ -543,30 +620,11 @@ QUIZ:
 
 
     with tab3:
-        st.markdown("""
-        <div style="
-        background:linear-gradient(135deg,#1E293B,#0F172A);
-        padding:14px;
-        border-radius:18px;
-        border:1px solid #334155;
-        margin-bottom:20px;
-        ">
-
-        <h2 style="color:white;">
-        🎬 AI Video Prompt
-        </h2>
-
-        <p style="
-        color:#94A3B8;
-        font-size:15px;
-        margin-top:5px;">
-        ✨ Create cinematic videos using this AI-generated prompt.
-        </p>
-
-        <hr style="border:1px solid #334155;">
-
-        </div>
-        """, unsafe_allow_html=True)
+        section_header(
+        "🎬",
+        "AI Video Prompt",
+        "Create cinematic videos using this AI-generated prompt."
+        )
 
         st.markdown(f"""
         <div style="
@@ -593,30 +651,11 @@ QUIZ:
 
 
     with tab4:
-        st.markdown("""
-        <div style="
-        background:linear-gradient(135deg,#1E293B,#0F172A);
-        padding:14px;
-        border-radius:18px;
-        border:1px solid #334155;
-        margin-bottom:20px;
-        ">
-
-        <h2 style="color:white;">
-        🎤 AI Voice Narration
-        </h2>
-
-        <p style="
-        color:#94A3B8;
-        font-size:15px;
-        margin-top:5px;">
-        ✨ Listen to the AI-generated narration or download it as an MP3.
-        </p>
-
-        <hr style="border:1px solid #334155;">
-
-        </div>
-        """, unsafe_allow_html=True)
+        section_header(
+            "🎤",
+            "AI Voice Narration",
+            "Listen to the AI-generated narration or download it."
+)
 
         language_codes = {
             "English": "en",
@@ -673,30 +712,11 @@ QUIZ:
 
     with tab5:
 
-        st.markdown("""
-        <div style="
-        background:linear-gradient(135deg,#1E293B,#0F172A);
-        padding:14px;
-        border-radius:18px;
-        border:1px solid #334155;
-        margin-bottom:20px;
-        ">
-
-        <h2 style="color:white;">
-        ❓ AI Quiz
-        </h2>
-
-        <p style="
-        color:#94A3B8;
-        font-size:15px;
-        margin-top:5px;">
-        ✨ Test your child's understanding with fun questions.
-        </p>
-
-        <hr style="border:1px solid #334155;">
-
-        </div>
-        """, unsafe_allow_html=True)
+        section_header(
+        "❓",
+        "AI Quiz",
+        "Test your child's understanding with fun questions."
+)
 
         formatted_quiz = quiz.replace("\n", "<br><br>")
 
@@ -727,7 +747,7 @@ QUIZ:
         <div style="
         text-align:center;
         padding:20px;
-        color:#94A3B8;
+        color:#CBD5E1;
         font-size:16px;
         ">
 
@@ -736,4 +756,5 @@ QUIZ:
 
         </div>
         """, unsafe_allow_html=True)
+        
         

@@ -1,0 +1,45 @@
+div.stButton > button {
+    background: linear-gradient(90deg,#4F46E5,#7C3AED,#EC4899);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 15px;
+    border: none;
+    height: 60px;
+    width: 100%;
+}
+
+div.stButton > button:hover {
+    box-shadow: 0 0 20px rgba(236,72,153,0.6);
+    transform: scale(1.02);
+}
+/* ===== Tabs ===== */
+
+button[data-baseweb="tab"] {
+    background: rgba(30, 41, 59, 0.85);
+    color: white !important;
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin-right: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+button[data-baseweb="tab"]:hover {
+    background: #4F46E5;
+    color: white !important;
+}
+
+button[data-baseweb="tab"][aria-selected="true"] {
+    background: linear-gradient(90deg, #4F46E5, #EC4899);
+    color: white !important;
+}
+.feature-card{
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.feature-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 40px rgba(0,0,0,.45);
+}
