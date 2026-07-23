@@ -14,6 +14,8 @@ from utils import generate_image, create_pdf, save_story
 from gtts import gTTS
 import io
 import base64
+import re
+
 def add_bg(image_file):
     with open(image_file, "rb") as image:
         encoded = base64.b64encode(image.read()).decode()
@@ -59,6 +61,25 @@ def section_header(icon, title, subtitle):
 
     </div>
     """, unsafe_allow_html=True)
+def clean_text(text):
+    text = re.sub(r"\*\*", "", text)
+    text = re.sub(r"\*", "", text)
+    text = re.sub(r"```", "", text)
+
+    # Remove HTML tags
+    text = re.sub(r"</?div.*?>", "", text)
+
+    # Remove tone instructions
+    text = re.sub(r"\(.*?tone.*?\)", "", text, flags=re.IGNORECASE)
+
+    # Remove labels
+    text = re.sub(r"STORY:", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"IMAGE_PROMPT:", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"VIDEO_PROMPT:", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"VOICE_OVER:", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"QUIZ:", "", text, flags=re.IGNORECASE)
+
+    return text.strip()
 
 
 
@@ -397,13 +418,15 @@ QUIZ:
         progress.progress(20)
 
         response = client.chat.completions.create(
-            model="tencent/hy3:free",
+            model="deepseek/deepseek-chat-v3-0324",
+            max_tokens=1200,
+            temperature=0.7,
             messages=[
                 {
                     "role": "user",
                     "content": prompt
                 }
-           ]
+            ]
         )
 
         status.write("🎨 Generating Image...")
@@ -417,7 +440,15 @@ QUIZ:
 
         status.write("✅ Done!")
         progress.progress(100)
+    
+
     result = response.choices[0].message.content
+    result = result.replace("```", "")
+    result = result.replace("**", "")
+    result = result.replace("<div>", "")
+    result = result.replace("</div>", "")
+    result = result.strip()
+    
 
     story = ""
     image_prompt = ""
@@ -443,9 +474,15 @@ QUIZ:
 
         quiz = temp.split("QUIZ:")[1].strip()
 
+
     except:
 
         story = result
+    story = clean_text(story)
+    image_prompt = clean_text(image_prompt)
+    video_prompt = clean_text(video_prompt)
+    voice_over = clean_text(voice_over)
+    quiz = clean_text(quiz)
 
     st.balloons()
 
@@ -470,6 +507,9 @@ QUIZ:
     if image is not None:
         image_path = f"generated/image_{timestamp}.png"
         image.save(image_path)
+        
+
+        
 
     pdf_path = create_pdf(
         story,
@@ -620,6 +660,7 @@ Explore your AI-generated story, illustration, video prompt, narration and quiz.
 
 
     with tab3:
+        
         section_header(
         "🎬",
         "AI Video Prompt",
