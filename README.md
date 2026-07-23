@@ -1,35 +1,70 @@
 # 🧸 AI Kids Content Studio
 
-An AI-powered educational web application that creates engaging children's content including AI-generated stories, illustrations, voice narration, video prompts, quizzes, and downloadable PDFs in multiple languages.
+<p align="center">
+
+![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-red?style=for-the-badge&logo=streamlit)
+![OpenRouter](https://img.shields.io/badge/OpenRouter-AI-purple?style=for-the-badge)
+![Pollinations](https://img.shields.io/badge/Pollinations-AI-orange?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+</p>
+
+<p align="center">
+
+An AI-powered educational web application that creates magical children's stories, illustrations, voice narration, quizzes, video prompts, and downloadable PDFs.
+
+</p>
 
 ---
 
-## ✨ Features
+# 🌐 Live Demo
+
+👉 **Try the App Here**
+https://ai-kids-content-studio-wfwyy6yctcdwcfrowbyyqw.streamlit.app/
+
+---
+
+# 📑 Table of Contents
+
+- Features
+- Tech Stack
+- Screenshots
+- Installation
+- Project Structure
+- How It Works
+- Future Enhancements
+- Author
+
+---
+
+# ✨ Features
 
 - 📖 AI Story Generation
 - 🖼 AI Illustration Generation
 - 🎬 AI Video Prompt Generation
-- 🎤 AI Voice Narration (MP3)
-- ❓ Interactive Quiz Generator
+- 🎤 AI Voice Narration
+- ❓ AI Quiz Generator
 - 🌍 Multi-language Support
 - 📄 PDF Export
-- 🎨 Beautiful Child-Friendly UI
-- ☁️ Streamlit Deployment
+- 🎨 Child-Friendly Interactive UI
+- ☁️ Streamlit Cloud Deployment
 
 ---
 
-## 🛠 Tech Stack
+# 🛠 Tech Stack
 
-- Python
-- Streamlit
-- OpenRouter API
-- Pollinations AI
-- OpenAI SDK
-- gTTS
-- Pillow
-- ReportLab
-- Requests
-- Git & GitHub
+| Category | Technologies |
+|-----------|-------------|
+| Programming | Python |
+| Frontend | Streamlit |
+| AI | OpenRouter API |
+| Image Generation | Pollinations AI |
+| Text-to-Speech | gTTS |
+| PDF | ReportLab |
+| Image Processing | Pillow |
+| HTTP | Requests |
+| Version Control | Git & GitHub |
 
 ---
 
@@ -67,25 +102,25 @@ An AI-powered educational web application that creates engaging children's conte
 
 # 🚀 Installation
 
-### Clone the repository
+Clone the repository
 
 ```bash
 git clone https://github.com/DeekshaMD15/AI-Kids-Content-Studio.git
 ```
 
-### Navigate to the project
+Move into the project
 
 ```bash
 cd AI-Kids-Content-Studio
 ```
 
-### Install dependencies
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Run the application
+Run the application
 
 ```bash
 streamlit run app.py
@@ -96,19 +131,14 @@ streamlit run app.py
 # 📂 Project Structure
 
 ```text
-AI-Kids-Content-Studio/
+AI-Kids-Content-Studio
 │
 ├── assets/
 │   └── images/
-│       └── background.png
 │
 ├── generated/
+│
 ├── images/
-│   ├── home.png
-│   ├── story.png
-│   ├── image.png
-│   ├── voice.png
-│   └── quiz.png
 │
 ├── app.py
 ├── prompts.py
@@ -120,30 +150,69 @@ AI-Kids-Content-Studio/
 
 ---
 
-# 🌟 Key Highlights
+# ⚙️ How It Works
 
-- Generates AI-powered children's stories based on user input.
-- Creates colorful AI illustrations for each story.
-- Produces voice narration in multiple languages.
-- Generates cinematic video prompts for story animation.
-- Creates quizzes based on the generated story.
-- Exports complete storybooks as downloadable PDFs.
-- Responsive and child-friendly Streamlit interface.
+1. User enters a story topic.
+2. AI generates a children's story.
+3. AI creates a matching illustration.
+4. Voice narration is generated.
+5. A cinematic video prompt is produced.
+6. A quiz is generated from the story.
+7. Users can download the complete PDF.
 
 ---
 
-# 👩‍💻 Developed By
+# 📊 Project Highlights
 
-**Deeksha M D**
+- ✅ AI-powered educational platform
+- ✅ End-to-end content generation
+- ✅ Multi-language support
+- ✅ Beautiful custom Streamlit UI
+- ✅ Responsive layout
+- ✅ Downloadable PDF reports
+- ✅ Interactive quizzes
+- ✅ Voice narration support
 
-🎓 B.E. in Electronics and Communication Engineering
+---
+
+# 🚀 Future Enhancements
+
+- User authentication
+- Story history
+- Animated illustrations
+- AI-generated videos
+- Reading progress tracking
+- Parent dashboard
+
+---
+
+# 👩‍💻 Author
+
+## **Deeksha M D**
+
+🎓 B.E. Electronics & Communication Engineering
 
 🤖 AI & Machine Learning Enthusiast
 
 📍 Mysuru, Karnataka, India
 
+GitHub:
+https://github.com/DeekshaMD15
+
 ---
 
 # ⭐ Support
 
-If you found this project helpful, consider giving this repository a ⭐ on GitHub!
+If you found this project useful,
+
+**please give this repository a ⭐**
+
+It motivates me to build more AI projects.
+
+---
+
+<p align="center">
+
+Made with ❤️ using Python, Streamlit & AI
+
+</p>
